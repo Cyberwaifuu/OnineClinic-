@@ -1,0 +1,13 @@
+{{template "base" .}}
+{{define "title"}}View appointment{{end}}
+{{define "main"}}
+    {{with .Appointment}}
+        <div>
+            <div>{{.ID}}</div>
+            <div>{{.Doctortype}}</div>
+            <div>{{.Username}}</div>
+            <div>{{.Phonenumber}}</div>
+            <div>{{.Created}}</div>
+        </div>
+    {{end}}
+{{end}}

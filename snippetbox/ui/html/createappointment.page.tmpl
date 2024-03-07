@@ -1,0 +1,35 @@
+{{template "base" .}}
+{{define "title"}}Create appointment{{end}}
+{{define "main"}}
+    <form action='/appointment/createAppointment' method='POST' novalidate>
+        <!-- Include the CSRF token -->
+        <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+        {{with .Form}}
+            <div>
+                <label>Doctor type:</label>
+                {{with .Errors.Get "doctortype"}}
+                    <label class='error'>{{.}}</label>
+                {{end}}
+                <input type='text' name='doctortype' value='{{.Get "name"}}'>
+            </div>
+            <div>
+                <label>Name:</label>
+                {{with .Errors.Get "name"}}
+                    <label class='error'>{{.}}</label>
+                {{end}}
+                <input type='text' name='username' value='{{.Get "name"}}'>
+            </div>
+
+            <div>
+                <label>Phone number:</label>
+                {{with .Errors.Get "phonenumber"}}
+                    <label class='error'>{{.}}</label>
+                {{end}}
+                <input type='text' name='phonenumber'>
+            </div>
+            <div>
+                <input type='submit' value='Create appointment'>
+            </div>
+        {{end}}
+    </form>
+{{end}}
